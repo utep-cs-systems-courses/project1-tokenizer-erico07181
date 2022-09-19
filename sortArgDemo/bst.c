@@ -1,4 +1,5 @@
-#include "malloc.h"
+#include "stdlib.h"
+//#include "malloc.h"
 #include "bst.h"
 
 BstNode *root = 0;
@@ -23,7 +24,7 @@ int bstStrlen(char *s)
 
 
 void
-bstInsert(BstNode **rootp, char *str) 
+bstInsert(BstNode **rootp, char *str)
 {
   if (*rootp == 0) {		/* insert here */
     BstNode *newNode = malloc(sizeof(BstNode));
@@ -31,7 +32,7 @@ bstInsert(BstNode **rootp, char *str)
     /* copy first zero-terminated  string from inbuf */
     int len = bstStrlen(str), sindex = 0;
     char *scopy = malloc((len + 1) * sizeof(char)), c;
-    do {	
+    do {
       c = *(scopy+sindex) = *(str+sindex);
       sindex++;
     } while (c);
@@ -48,7 +49,7 @@ bstPrint(BstNode *root)		/* in order */
 {
   if (root == 0) return;
   bstPrint(root->children[0]);
-  puts(root->str); 
+  puts(root->str);
   bstPrint(root->children[1]);
 }
 
