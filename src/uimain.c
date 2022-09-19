@@ -1,12 +1,13 @@
 #include <stdio.h>
-
+//#include <>
 
 int main()
 {
+    char userResponse[32];
+
     while(1){
-        char userResponse[32];
         printf("> ");
-        scanf("%s", userResponse);
+        scanf ("%[^\n]%*c", userResponse);
         printf("%s\n", userResponse);
     }
 
