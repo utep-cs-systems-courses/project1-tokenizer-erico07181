@@ -16,7 +16,9 @@ int main()
         printf("word end: %c\n", *word_terminator(userResponse));
         //count_words(userResponse);
         printf("I count %i words\n", count_words(userResponse));
-        printf("Copy str: %c\n", *copy_str(userResponse, 7));
+        //printf("Copy str: %c\n", *copy_str(userResponse, 7));
+        char **tokens = tokenize(userResponse);
+        print_tokens(tokens);
     }
 
     return 0;
