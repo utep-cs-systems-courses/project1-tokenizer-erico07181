@@ -57,21 +57,29 @@ int count_words(char *str)
 /* Returns a fresly allocated new zero-terminated string
    containing <len> chars from <inStr> */
 char *copy_str(char *inStr, short len){
-    char newStr[len+1];
-    for(int i = 0; i < len; i ++){
-        if(space_char(inStr[i])){
-           newStr[i] = '\0';
+    int numWords = count_words(inStr);
+    char newStr[len+numWords];
+    int newStrCount = 0;
+    char *endWord = word_terminator(word_start(inStr));
+    for(int i = 0; i < len + numWords  && inStr[i] != 0; i ++){
+        if(!space_char(inStr[i])){
+            newStr[newStrCount] = inStr[i];
+            newStrCount++;
         }
-        else{
-            newStr[i] = inStr[i];
+        else if(&inStr[i] == endWord){
+            newStr[newStrCount] = 0;
+            newStrCount++;
+            endWord = word_terminator(word_start(endWord));
+        }
+        else if(inStr[i] == 0){
+            break;
         }
     }
-    newStr[len+1] = '\0';
-    char *pnS = newStr;
-    for(int i = 0; i < len+1; i ++){
-        printf("Char of new str: %c\n", newStr[i]);
+    char *pNS = &newStr[0];
+    for(int i=0; i < len + numWords; i++){
+        printf("New Str char: %c\n", pNS[i]);
     }
-    return pnS;
+    return pNS;
 }
 /* Returns a freshly allocated zero-terminated vector of freshly allocated
    space-separated tokens from zero-terminated str.
