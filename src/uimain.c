@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include "tokenizer.h"
+#include "tokenizer.c"
 
 int main()
 {
-    char userResponse[32];
+    char userResponse[64];
 
     while(1){
         printf("> ");
@@ -12,8 +12,10 @@ int main()
         char *p = &userResponse[0];
         printf("Is %c a white space? %i\n", *p, space_char(*p));
         printf("Is %c a non-white space? %i\n", *p, non_space_char(*p));
-        printf("word start: %c\n", *word_start(p));
-        word_terminator(userResponse);
+        printf("word start: %c\n", *word_start(userResponse)); //Ask TA about this!!!!
+        printf("word end: %c\n", *word_terminator(userResponse));
+        //count_words(userResponse);
+        printf("I count %i words\n", count_words(userResponse));
 
     }
 
