@@ -16,7 +16,7 @@ int main()
         printf("word end: %c\n", *word_terminator(userResponse));
         //count_words(userResponse);
         printf("I count %i words\n", count_words(userResponse));
-
+        printf("Copy str: %c\n", *copy_str(userResponse, 7));
     }
 
     return 0;
