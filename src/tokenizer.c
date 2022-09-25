@@ -1,6 +1,5 @@
 #include "stdlib.h"
 #include <stdio.h>
-#include <string.h>
 #include "tokenizer.h"
 /* Return true (non-zero) if c is a whitespace characer
    ('\t' or ' ').

@@ -1,9 +1,12 @@
 CFLAGS=-g
+OBJS = uimain.o tokenizer.o history.o
 
-all: uimain
+all: proj1
 
-uimain: uimain.o
-	cc -o $@ $^ $(CFLAGS)
+proj1: ${OBJS}
+	cc -o $@ $(CFLAGS) $(OBJS)
+
+$(OBJS): tokenizer.h history.h
 
 clean:
-	rm -f *.o uimain
+	rm -f *.o proj1
