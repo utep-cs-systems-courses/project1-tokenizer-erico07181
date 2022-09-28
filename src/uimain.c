@@ -1,24 +1,30 @@
 #include <stdio.h>
+#include "stdlib.h"
 #include "tokenizer.h"
-
+#include "history.h"
 int main()
 {
     char userResponse[64];
-
+    List *hist = init_history();
+    //add_history(hist, "ajhebvhlb");
+    //add_history(hist, "gg ez");
     while(1){
+        printf("Would you like to access your history or tokenize? (!h or !t)\n");
         printf("> ");
-        fgets(userResponse, 32, stdin);
-        printf("%s\n", userResponse);
-        char *p = &userResponse[0];
-        printf("Is %c a white space? %i\n", *p, space_char(*p));
-        printf("Is %c a non-white space? %i\n", *p, non_space_char(*p));
-        printf("word start: %c\n", *word_start(userResponse)); //Ask TA about this!!!!
-        printf("word end: %c\n", *word_terminator(userResponse));
-        //count_words(userResponse);
-        printf("I count %i words\n", count_words(userResponse));
-        //printf("Copy str: %c\n", *copy_str(userResponse, 7));
-        char **tokens = tokenize(userResponse);
-        print_tokens(tokens);
+        fgets(userResponse, 64, stdin);
+        if(userResponse[0] == '!'){
+            if(userResponse[1] == 'h'){
+            }
+            if(userResponse[1] == 't'){
+                printf("Type in your string: \n");
+                printf("> ");
+                fgets(userResponse, 64, stdin);
+                add_history(hist, userResponse);
+                char **tokens = tokenize(userResponse);
+                print_tokens(tokens);
+            }
+        }
+
     }
 
     return 0;
