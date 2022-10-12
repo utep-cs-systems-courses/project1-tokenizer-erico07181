@@ -10,7 +10,6 @@ typedef struct s_Item {
 typedef struct s_List {
   struct s_Item *root;
 } List;
-
 /* Initialize the linked list to keep the history. */
 List* init_history();
 
@@ -27,6 +26,8 @@ char *get_history(List *list, int id);
 
 /*Print the entire contents of the list. */
 void print_history(List *list);
+
+int len_of_list(List *list);
 
 /*Free the history list and the strings it references. */
 void free_history(List *list);
